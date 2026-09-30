@@ -62,15 +62,21 @@ body {
 
 /* 3 ---------------------------------------------------------------------- */
 
-/* The portraits ride ABOVE the shell surfaces. At z-index -1 they sat under the
-   centre column's fill, and that fill is 75-80% opaque in the dark theme — a
-   dark portrait behind it is simply invisible. The narrow data column above
-   keeps the transcript out of their wings, so painting on top costs nothing. */
+/* The input card is the geometric anchor: each portrait is pinned to one edge of
+   it, so both follow whatever the two drawers do to the centre column without a
+   single measurement. z-index is deliberately huge — the shell's own frame
+   subtree carries z-index 15 layers and swallowed z-index 5. */
+[data-composer-card],
+[data-composer-seat],
+[data-dsh-surface="composer"] {
+  anchor-name: --lucy-composer;
+}
+
 body:before,
 body:after {
   content: "";
   position: fixed;
-  z-index: 5;
+  z-index: 9999;
   bottom: clamp(-30px, -2vh, -10px);
   pointer-events: none;
   background-repeat: no-repeat, no-repeat;
@@ -78,15 +84,13 @@ body:after {
   background-size: auto, contain;
   opacity: 1;
   filter: saturate(1.06) contrast(1.04) drop-shadow(0 22px 30px #04101f5c);
-  transition: left 0.32s cubic-bezier(0.22, 0.78, 0.2, 1), right 0.32s cubic-bezier(0.22, 0.78, 0.2, 1), height 0.6s cubic-bezier(0.22, 0.78, 0.2, 1);
+  transition: left 0.3s cubic-bezier(0.22, 0.78, 0.2, 1), right 0.3s cubic-bezier(0.22, 0.78, 0.2, 1), height 0.6s cubic-bezier(0.22, 0.78, 0.2, 1);
 }
 
-/* Left: back view with the glowing cyberware traces, riding the sidebar edge.
-   Ladder: a plain baseline, then the width the desktop frame publishes, then
-   the collapsed state (0px rail on the Windows host, 56px elsewhere). */
+/* Left portrait: its right edge sits on the card's left edge. */
 body:before {
-  left: clamp(198px, 17vw, 292px);
-  left: calc(var(--dsh-windows-sidebar-width, 280px) + var(--lucy-wing-gap));
+  right: 56vw;
+  right: calc(100% - anchor(--lucy-composer left, 44vw));
   width: clamp(200px, 22vw, 356px);
   height: clamp(400px, 76vh, 940px);
   background-image:
@@ -94,13 +98,10 @@ body:before {
     url("assets/lucy-signal-left.webp");
 }
 
-body:has([class*="_frame"][data-sidebar-collapsed]):before {
-  left: calc(var(--dsh-windows-sidebar-width, 0px) + var(--lucy-wing-gap));
-}
-
-/* Right: front view, the larger of the two, against the window's right edge. */
+/* Right portrait: its left edge sits on the card's right edge. */
 body:after {
-  right: 0;
+  left: 44vw;
+  left: anchor(--lucy-composer right, 56vw);
   width: clamp(230px, 25vw, 400px);
   height: clamp(440px, 86vh, 1040px);
   background-image:
@@ -108,12 +109,21 @@ body:after {
     url("assets/lucy-signal-right.webp");
 }
 
-/* The details pane can take up to 45% of the frame, and then there is no wing
-   left to stand in: the stage goes quiet instead of dropping a portrait on top
-   of the transcript. */
-body:has([data-rightbar-col]):not(:has([class*="_frame"][data-rightbar-collapsed])):before,
+@supports not (right: anchor(--lucy-composer left, 0px)) {
+  /* Without anchors: the two known drawer states, expressed as offsets that put
+     the portraits beside a centred card. */
+  body:before {
+    right: clamp(600px, 56vw, 1000px);
+  }
+
+  body:after {
+    left: clamp(600px, 56vw, 1000px);
+  }
+}
+
+/* With the details pane open the card's right edge is already at the pane, so
+   only the left portrait has a wing to stand in. */
 body:has([data-rightbar-col]):not(:has([class*="_frame"][data-rightbar-collapsed])):after,
-body:has([class*="_frame"]:not([data-rightbar-collapsed])):before,
 body:has([class*="_frame"]:not([data-rightbar-collapsed])):after {
   display: none;
 }
@@ -130,23 +140,10 @@ body[data-ds-dark-theme]:after {
     url("assets/lucy-signal-right.webp");
 }
 
-@media (width <= 1180px) {
-  body:before {
-    width: clamp(180px, 20vw, 300px);
-  }
-
+@media (width <= 900px) {
+  body:before,
   body:after {
-    width: clamp(200px, 24vw, 320px);
-  }
-}
-
-@media (width <= 860px) {
-  body:before {
     display: none;
-  }
-
-  body:after {
-    width: clamp(150px, 26vw, 210px);
   }
 }
 
