@@ -11,8 +11,8 @@
 
 :root {
   /* surfaces */
-  --dsw-alias-bg-base: #eaf3f9a6;
-  --dsw-alias-bg-layer-1: #ffffffb0;
+  --dsw-alias-bg-base: transparent;
+  --dsw-alias-bg-layer-1: #ffffffa3;
   --dsw-alias-bg-layer-2: #e9f2f9ba;
   --dsw-alias-bg-layer-3: #dae7f1c0;
   --dsw-alias-bg-layer-4: #cbdcecca;
@@ -111,9 +111,9 @@
   --dsw-specific-sidebar-nav-item-hover: #0891b218;
   --dsw-specific-sidebar-nav-item-active: #0891b22b;
   --dsw-specific-sidebar-nav-item-active-accent: #0891b2;
-  --dsw-specific-bubble: #ffffffc4;
+  --dsw-specific-bubble: #ffffffb0;
   --dsw-specific-bubble-highlight: #e4f6fb;
-  --dsw-specific-input-major: #ffffffb4;
+  --dsw-specific-input-major: #ffffff96;
   --dsw-specific-login-input: #ffffffcc;
   --dsw-specific-menu: #ffffffef;
   --dsw-specific-selector: #ffffffef;
@@ -145,7 +145,7 @@
 
 body[data-ds-dark-theme] {
   /* surfaces */
-  --dsw-alias-bg-base: #05080fc2;
+  --dsw-alias-bg-base: transparent;
   --dsw-alias-bg-layer-1: #0a1120c8;
   --dsw-alias-bg-layer-2: #101a2cd0;
   --dsw-alias-bg-layer-3: #16233cdb;
@@ -245,9 +245,9 @@ body[data-ds-dark-theme] {
   --dsw-specific-sidebar-nav-item-hover: #22d3ee1f;
   --dsw-specific-sidebar-nav-item-active: #22d3ee33;
   --dsw-specific-sidebar-nav-item-active-accent: #22d3ee;
-  --dsw-specific-bubble: #101a2cc8;
+  --dsw-specific-bubble: #101a2cb8;
   --dsw-specific-bubble-highlight: #16233c;
-  --dsw-specific-input-major: #0a1120c0;
+  --dsw-specific-input-major: #0a1120a8;
   --dsw-specific-login-input: #0a1120d9;
   --dsw-specific-menu: #0d1424f2;
   --dsw-specific-selector: #0d1424f2;

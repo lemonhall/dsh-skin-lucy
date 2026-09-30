@@ -3,9 +3,10 @@
  *
  * Contents:
  *   1. keep the declarative backgroundMedia layer paintable;
- *   2. the two character silhouettes (declarative, so the market preview
+ *   2. narrow the data column so the two characters own the outer wings;
+ *   3. the two character silhouettes (declarative, so the market preview
  *      renderer — which never runs skin hooks — shows them too);
- *   3. neon chrome on the shell surfaces.
+ *   4. neon chrome on the shell surfaces.
  *
  * Note: the patch pipeline prefixes every selector with
  * `html[data-dsh-skin="lucy-nightsignal"] `, so a `:root` rule here can never
@@ -40,6 +41,23 @@ body {
 
 /* 2 ---------------------------------------------------------------------- */
 
+/* The data column is narrowed on purpose: the two characters flank it in the
+   free wings instead of being buried under the composer and the transcript.
+   Both shell variables are the official geometry knobs (see the shell's
+   `--dsh-chat-content-width` / `--dsh-composer-card-max-width`). */
+:is(
+  [data-phase="hero"],
+  [data-phase="active"],
+  [data-slot="conversation"],
+  [data-dsh-surface="conversation"],
+  [class*="centerCol"]
+) {
+  --dsh-chat-content-width: clamp(520px, 40vw, 760px);
+  --dsh-composer-card-max-width: calc(var(--dsh-chat-content-width) + 32px);
+}
+
+/* 3 ---------------------------------------------------------------------- */
+
 body:before,
 body:after {
   content: "";
@@ -47,53 +65,78 @@ body:after {
   z-index: -1;
   bottom: clamp(-30px, -2vh, -10px);
   pointer-events: none;
-  background-repeat: no-repeat;
-  background-position: center bottom;
-  background-size: contain;
+  background-repeat: no-repeat, no-repeat;
+  background-position: center, center bottom;
+  background-size: auto, contain;
   opacity: 1;
   filter: saturate(1.06) contrast(1.04) drop-shadow(0 22px 30px #04101f5c);
   transition: height 0.6s cubic-bezier(0.22, 0.78, 0.2, 1);
 }
 
-/* Left: back view with the glowing cyberware traces, parked just right of the
-   sidebar so both characters flank the conversation column. */
+/* Left: back view with the glowing cyberware traces, hugging the sidebar. */
 body:before {
-  left: clamp(196px, 17vw, 296px);
-  width: clamp(210px, 23vw, 376px);
-  height: clamp(400px, 74vh, 920px);
-  background-image: url("assets/lucy-signal-left.webp");
+  left: clamp(198px, 17vw, 292px);
+  width: clamp(200px, 22vw, 356px);
+  height: clamp(400px, 76vh, 940px);
+  background-image:
+    radial-gradient(58% 46% at 55% 72%, #dfeaf473, #dfeaf400 72%),
+    url("assets/lucy-signal-left.webp");
 }
 
-/* Right: front view, the larger of the two. */
+/* Right: front view, the larger of the two, parked in the right wing. */
 body:after {
   right: 0;
-  width: clamp(240px, 29vw, 460px);
-  height: clamp(440px, 84vh, 1020px);
-  background-image: url("assets/lucy-signal-right.webp");
+  width: clamp(230px, 25vw, 400px);
+  height: clamp(440px, 86vh, 1040px);
+  background-image:
+    radial-gradient(58% 46% at 45% 72%, #dfeaf473, #dfeaf400 72%),
+    url("assets/lucy-signal-right.webp");
 }
 
 body[data-ds-dark-theme]:before,
 body[data-ds-dark-theme]:after {
-  filter: brightness(0.94) saturate(1.04) drop-shadow(0 24px 34px #00000073);
+  filter: brightness(0.96) saturate(1.05) drop-shadow(0 24px 34px #00000080);
+}
+
+body[data-ds-dark-theme]:before {
+  background-image:
+    radial-gradient(58% 46% at 55% 72%, #0a1526b8, #0a152600 72%),
+    url("assets/lucy-signal-left.webp");
+}
+
+body[data-ds-dark-theme]:after {
+  background-image:
+    radial-gradient(58% 46% at 45% 72%, #0a1526b8, #0a152600 72%),
+    url("assets/lucy-signal-right.webp");
 }
 
 /* A conversation in the column makes the characters settle a little, never
    fade: the manga presence is the point of the skin. */
 body[data-dsh-conversation-content="true"]:before {
-  height: clamp(340px, 62vh, 780px);
+  height: clamp(360px, 68vh, 860px);
 }
 
 body[data-dsh-conversation-content="true"]:after {
-  height: clamp(380px, 72vh, 860px);
+  height: clamp(400px, 78vh, 960px);
 }
 
 @media (width <= 1180px) {
+  :is(
+    [data-phase="hero"],
+    [data-phase="active"],
+    [data-slot="conversation"],
+    [data-dsh-surface="conversation"],
+    [class*="centerCol"]
+  ) {
+    --dsh-chat-content-width: clamp(460px, 52vw, 680px);
+  }
+
   body:before {
-    left: clamp(180px, 16vw, 260px);
+    left: clamp(180px, 16vw, 250px);
   }
 
   body:after {
-    width: clamp(210px, 26vw, 340px);
+    width: clamp(200px, 24vw, 320px);
   }
 }
 
@@ -107,7 +150,7 @@ body[data-dsh-conversation-content="true"]:after {
   }
 }
 
-/* 3 ---------------------------------------------------------------------- */
+/* 4 ---------------------------------------------------------------------- */
 
 /* Neon hairline across the top of the frame. */
 [data-slot="root"]:after {
