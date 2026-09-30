@@ -93,7 +93,11 @@ body:before,
 body:after {
   content: "";
   position: fixed;
-  z-index: 9999;
+  /* Above every shell surface (the frame's own layers are 15-40) but below the
+     whale-widget root, which is fixed at z-index 9999 on <body>: an equal value
+     loses the tie to a pseudo-element (last child box), so the pet and its bubble
+     would be painted over. */
+  z-index: 900;
   bottom: clamp(-30px, -2vh, -10px);
   pointer-events: none;
   background-repeat: no-repeat, no-repeat;
@@ -122,7 +126,6 @@ body:before {
 body:after {
   left: 80vw;
   left: anchor(--lucy-composer right, 80vw);
-  bottom: clamp(150px, 20vh, 210px);
   height: clamp(460px, 76vh, 1040px);
   aspect-ratio: 915 / 1800;
   width: auto;
