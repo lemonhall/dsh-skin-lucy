@@ -1,13 +1,13 @@
 [
   {
-    "src": "sd-run-05-scene-light/image-0.png",
+    "src": "sd-run-07-scene-light-v2/image-0.png",
     "out": "scene-light.webp",
     "size": [
       1920,
       1280
     ],
     "mode": "RGB",
-    "bytes": 95152
+    "bytes": 280238
   },
   {
     "src": "sd-run-06-scene-dark/image-0.png",

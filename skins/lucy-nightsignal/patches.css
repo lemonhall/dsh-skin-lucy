@@ -21,6 +21,16 @@ body {
   isolation: isolate;
 }
 
+/* The app root paints an opaque canvas, which turns the host's backgroundMedia
+   layer (z-index -2) into an ordinary element background painted after the
+   negative-z layers: the whole window goes flat and both the artwork and the
+   characters vanish. `background: none` puts the canvas step back on body so
+   the -2 layer paints again (the same fix maid-atelier carries). */
+[id="root"] {
+  background: none;
+  position: relative;
+}
+
 /* The Windows desktop host paints `--dsw-specific-sidebar-fill` on the
    whole-window frame element, which is an ancestor of the conversation column
    and would crush the background illustration. */

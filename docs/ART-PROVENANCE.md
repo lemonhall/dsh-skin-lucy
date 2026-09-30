@@ -83,7 +83,7 @@ was described in text only.
 ### sd-run-05-scene-light
 
 - model: `volcengine/doubao-seedream-5.0-pro`
-- note: FINAL light background, people-free
+- note: light scene attempt (came back too high-key to read under a light scrim) - superseded
 - file: `image-0.png` — 5934204 bytes, sha256 `c2abd3ef42b5b20169021594dd589d1245f87ca99cc3a41dd0691667252a89f8`
 - inspected: 2496x1664 RGB, alpha=False
 - prompt:
@@ -104,6 +104,18 @@ was described in text only.
   宽幅电影感动漫插画，16:9。夜晚，霓虹赛博朋克大都市高处的天台视野，深靛蓝夜空，青与洋红的全息霓虹辉光，远处成片暖黄窗格，湿漉漉的地面反光与流动雾气。画面左侧三分之一是安静的深色天幕，留出大片空白；画面右侧站着一位银白色齐下巴波波头、发尾带柔和彩虹渐变的年轻女性，背对镜头四分之三角度、中景距离，穿白色短款夹克与黑色服装，俯瞰城市。强烈青洋红轮廓光，高对比度，浓厚的大气纵深。不要文字、不要字母、不要可辨识的招牌文字、不要水印、不要签名。
   ```
 
+### sd-run-07-scene-light-v2
+
+- model: `volcengine/doubao-seedream-5.0-pro`
+- note: FINAL light background, people-free, blue-hour colour depth
+- file: `image-0.png` — 7027832 bytes, sha256 `91e2f866e7e68c464c20a5efb55731bc062a2cc83b6133a3ef1222aef2be5936`
+- inspected: 2496x1664 RGB, alpha=False
+- prompt:
+
+  ```text
+  宽幅电影感动漫插画，16:9。黄昏蓝调时刻的一座未来大都市天台视野：覆盖薄云的天空同时有青蓝与暖金两色层次，白与青色的玻璃高塔群，云层被夕阳染成金粉色，远处海湾大桥与水面反光，近景是干净的玻璃护栏天台地面。画面里绝对不要出现任何人物、动物或人影。左侧三分之一留出大片相对干净的天空，整体明亮通透但要有充足的对比与色彩层次，不要一片惨白。干净的线条，电影级景深，轻微泛光。不要文字、不要字母、不要水印、不要签名。
+  ```
+
 ## Local matting (chroma key)
 
 Recipe implemented in `tools/matte.py`, order matters —
@@ -122,7 +134,7 @@ component despeckle (minimum area 64).
 
 | file | size | bytes | role |
 | --- | --- | --- | --- |
-| `scene-light.webp` | 1920x1280 | 95152 | backgroundMedia.light |
+| `scene-light.webp` | 1920x1280 | 280238 | backgroundMedia.light |
 | `scene-dark.webp` | 1920x1280 | 226890 | backgroundMedia.dark |
 | `lucy-signal-left.webp` | 609x1800 | 189226 | patches.css body:before (back view) |
 | `lucy-signal-right.webp` | 915x1800 | 189602 | patches.css body:after (front view) |
