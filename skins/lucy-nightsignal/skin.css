@@ -11,11 +11,11 @@
 
 :root {
   /* surfaces */
-  --dsw-alias-bg-base: #eaf3f9d9;
-  --dsw-alias-bg-layer-1: #ffffffde;
-  --dsw-alias-bg-layer-2: #e9f2f9e6;
-  --dsw-alias-bg-layer-3: #dae7f1e6;
-  --dsw-alias-bg-layer-4: #cbdceceb;
+  --dsw-alias-bg-base: #eaf3f9a6;
+  --dsw-alias-bg-layer-1: #ffffffb0;
+  --dsw-alias-bg-layer-2: #e9f2f9ba;
+  --dsw-alias-bg-layer-3: #dae7f1c0;
+  --dsw-alias-bg-layer-4: #cbdcecca;
   --dsw-alias-bg-overlay: #08192bcc;
   --dsw-alias-bg-skeleton: #123a5c17;
   --dsw-alias-bg-multi-select: #0891b21f;
@@ -89,7 +89,7 @@
   --dsw-alias-state-business-tertiary: #0891b233;
 
   /* markdown */
-  --dsw-alias-markdown-inline-code: #dceaf4;
+  --dsw-alias-markdown-inline-code: #dceaf4d1;
   --dsw-alias-markdown-code-block: #08192bf5;
   --dsw-alias-markdown-code-block-banner: #122c44;
   --dsw-alias-markdown-placeholder: #7f97a8;
@@ -107,13 +107,13 @@
   --dsw-alias-file-diff-deleted-marker: #dc2626;
 
   /* specific surfaces */
-  --dsw-specific-sidebar-fill: #ffffffb8;
+  --dsw-specific-sidebar-fill: #ffffff96;
   --dsw-specific-sidebar-nav-item-hover: #0891b218;
   --dsw-specific-sidebar-nav-item-active: #0891b22b;
   --dsw-specific-sidebar-nav-item-active-accent: #0891b2;
-  --dsw-specific-bubble: #ffffffd9;
+  --dsw-specific-bubble: #ffffffc4;
   --dsw-specific-bubble-highlight: #e4f6fb;
-  --dsw-specific-input-major: #ffffffcc;
+  --dsw-specific-input-major: #ffffffb4;
   --dsw-specific-login-input: #ffffffcc;
   --dsw-specific-menu: #ffffffef;
   --dsw-specific-selector: #ffffffef;
@@ -145,11 +145,11 @@
 
 body[data-ds-dark-theme] {
   /* surfaces */
-  --dsw-alias-bg-base: #05080fdd;
-  --dsw-alias-bg-layer-1: #0a1120e6;
-  --dsw-alias-bg-layer-2: #101a2ceb;
-  --dsw-alias-bg-layer-3: #16233cf0;
-  --dsw-alias-bg-layer-4: #1d2d4ef2;
+  --dsw-alias-bg-base: #05080fc2;
+  --dsw-alias-bg-layer-1: #0a1120c8;
+  --dsw-alias-bg-layer-2: #101a2cd0;
+  --dsw-alias-bg-layer-3: #16233cdb;
+  --dsw-alias-bg-layer-4: #1d2d4ee2;
   --dsw-alias-bg-overlay: #03060df2;
   --dsw-alias-bg-skeleton: #7fe9ff14;
   --dsw-alias-bg-multi-select: #22d3ee24;
@@ -223,7 +223,7 @@ body[data-ds-dark-theme] {
   --dsw-alias-state-business-tertiary: #22d3ee33;
 
   /* markdown */
-  --dsw-alias-markdown-inline-code: #16233c;
+  --dsw-alias-markdown-inline-code: #16233cd1;
   --dsw-alias-markdown-code-block: #03060df5;
   --dsw-alias-markdown-code-block-banner: #0d1728;
   --dsw-alias-markdown-placeholder: #6a8399;
@@ -241,13 +241,13 @@ body[data-ds-dark-theme] {
   --dsw-alias-file-diff-deleted-marker: #f87171;
 
   /* specific surfaces */
-  --dsw-specific-sidebar-fill: #070d1ad9;
+  --dsw-specific-sidebar-fill: #070d1ac0;
   --dsw-specific-sidebar-nav-item-hover: #22d3ee1f;
   --dsw-specific-sidebar-nav-item-active: #22d3ee33;
   --dsw-specific-sidebar-nav-item-active-accent: #22d3ee;
-  --dsw-specific-bubble: #101a2cd9;
+  --dsw-specific-bubble: #101a2cc8;
   --dsw-specific-bubble-highlight: #16233c;
-  --dsw-specific-input-major: #0a1120d9;
+  --dsw-specific-input-major: #0a1120c0;
   --dsw-specific-login-input: #0a1120d9;
   --dsw-specific-menu: #0d1424f2;
   --dsw-specific-selector: #0d1424f2;
