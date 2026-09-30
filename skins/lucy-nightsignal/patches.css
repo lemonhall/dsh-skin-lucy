@@ -109,7 +109,7 @@ body:before {
   left: 40vw;
   left: anchor(--lucy-composer left, 40vw);
   translate: -100% 0;
-  height: clamp(400px, 76vh, 940px);
+  height: clamp(340px, 62vh, 780px);
   aspect-ratio: 609 / 1800;
   width: auto;
   background-image:
@@ -122,7 +122,8 @@ body:before {
 body:after {
   left: 80vw;
   left: anchor(--lucy-composer right, 80vw);
-  height: clamp(400px, 66vh, 900px);
+  bottom: clamp(150px, 20vh, 210px);
+  height: clamp(460px, 76vh, 1040px);
   aspect-ratio: 915 / 1800;
   width: auto;
   background-image:
