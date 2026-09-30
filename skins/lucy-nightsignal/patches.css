@@ -62,10 +62,20 @@ body {
 
 /* 3 ---------------------------------------------------------------------- */
 
-/* The input card is the geometric anchor: each portrait is pinned to one edge of
-   it, so both follow whatever the two drawers do to the centre column without a
-   single measurement. z-index is deliberately huge — the shell's own frame
-   subtree carries z-index 15 layers and swallowed z-index 5. */
+/* The input card is the geometric anchor: [data-composer-card] carries
+   anchor-name --lucy-composer, the left portrait puts its right edge on the
+   card's left edge (`left: anchor(...)` plus `translate: -100%`), the right
+   portrait puts its left edge on the card's right edge. Both therefore follow
+   whatever the two drawers do to the centre column, with no measurement and no
+   per-state rules. z-index is deliberately huge: the shell's frame subtree
+   carries z-index 15 layers and swallowed z-index 5.
+   Each portrait's box is exactly its artwork's box (height + aspect-ratio +
+   width:auto), so "box edge" really is "drawing edge" - a wider box would leave
+   a gap and the edges could never be flush.
+   Without anchor positioning the same declarations fall back to the
+   sidebar-open geometry, where the input card spans roughly 40%-80% of a
+   1440px frame. */
+
 [data-composer-card],
 [data-composer-seat],
 [data-dsh-surface="composer"] {
@@ -87,41 +97,33 @@ body:after {
   transition: left 0.3s cubic-bezier(0.22, 0.78, 0.2, 1), right 0.3s cubic-bezier(0.22, 0.78, 0.2, 1), height 0.6s cubic-bezier(0.22, 0.78, 0.2, 1);
 }
 
-/* Left portrait: its right edge sits on the card's left edge. */
+/* Left portrait: back view, right edge on the card's left edge. */
 body:before {
-  right: 56vw;
-  right: calc(100% - anchor(--lucy-composer left, 44vw));
-  width: clamp(200px, 22vw, 356px);
+  left: 40vw;
+  left: anchor(--lucy-composer left, 40vw);
+  translate: -100% 0;
   height: clamp(400px, 76vh, 940px);
+  aspect-ratio: 609 / 1800;
+  width: auto;
   background-image:
     radial-gradient(58% 46% at 55% 72%, #dfeaf459, #dfeaf400 72%),
     url("assets/lucy-signal-left.webp");
 }
 
-/* Right portrait: its left edge sits on the card's right edge. */
+/* Right portrait: front view, left edge on the card's right edge. Its height is
+   capped so the drawing ends at the window edge instead of being sliced by it. */
 body:after {
-  left: 44vw;
-  left: anchor(--lucy-composer right, 56vw);
-  width: clamp(230px, 25vw, 400px);
-  height: clamp(440px, 86vh, 1040px);
+  left: 80vw;
+  left: anchor(--lucy-composer right, 80vw);
+  height: clamp(400px, 66vh, 900px);
+  aspect-ratio: 915 / 1800;
+  width: auto;
   background-image:
     radial-gradient(58% 46% at 45% 72%, #dfeaf459, #dfeaf400 72%),
     url("assets/lucy-signal-right.webp");
 }
 
-@supports not (right: anchor(--lucy-composer left, 0px)) {
-  /* Without anchors: the two known drawer states, expressed as offsets that put
-     the portraits beside a centred card. */
-  body:before {
-    right: clamp(600px, 56vw, 1000px);
-  }
-
-  body:after {
-    left: clamp(600px, 56vw, 1000px);
-  }
-}
-
-/* With the details pane open the card's right edge is already at the pane, so
+/* With the details pane open the card's right edge already touches the pane, so
    only the left portrait has a wing to stand in. */
 body:has([data-rightbar-col]):not(:has([class*="_frame"][data-rightbar-collapsed])):after,
 body:has([class*="_frame"]:not([data-rightbar-collapsed])):after {
