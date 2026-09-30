@@ -130,12 +130,11 @@ body:after {
     url("assets/lucy-signal-right.webp");
 }
 
-/* With the details pane open the card's right edge already touches the pane, so
-   only the left portrait has a wing to stand in. */
-body:has([data-rightbar-col]):not(:has([class*="_frame"][data-rightbar-collapsed])):after,
-body:has([class*="_frame"]:not([data-rightbar-collapsed])):after {
-  display: none;
-}
+/* No pane-aware hiding: an earlier revision hid the right portrait whenever the
+   details pane looked open, but the frame's `data-rightbar-collapsed` flag is not
+   a reliable signal across hosts, and a missing flag hid the portrait in every
+   drawer state. It is anchored to the input card's right edge, so with the pane
+   open it simply stands over the pane - visible, which is the point. */
 
 body[data-ds-dark-theme]:before {
   background-image:
