@@ -1,0 +1,50 @@
+[
+  {
+    "src": "sd-run-05-scene-light/image-0.png",
+    "out": "scene-light.webp",
+    "size": [
+      1920,
+      1280
+    ],
+    "mode": "RGB",
+    "bytes": 95152
+  },
+  {
+    "src": "sd-run-06-scene-dark/image-0.png",
+    "out": "scene-dark.webp",
+    "size": [
+      1920,
+      1280
+    ],
+    "mode": "RGB",
+    "bytes": 226890
+  },
+  {
+    "src": "matte/left.png",
+    "out": "lucy-signal-left.webp",
+    "size": [
+      609,
+      1800
+    ],
+    "mode": "RGBA",
+    "bytes": 189226,
+    "transparent_pixels": 563987,
+    "partial_alpha_pixels": 35714,
+    "opaque_pixels": 496499,
+    "magenta_spill_samples": 38
+  },
+  {
+    "src": "matte/right.png",
+    "out": "lucy-signal-right.webp",
+    "size": [
+      915,
+      1800
+    ],
+    "mode": "RGBA",
+    "bytes": 189602,
+    "transparent_pixels": 1107839,
+    "partial_alpha_pixels": 41213,
+    "opaque_pixels": 497948,
+    "magenta_spill_samples": 50
+  }
+]

@@ -1,0 +1,33 @@
+Lucy · Night City Signal (露西·夜城信号)
+=========================================
+
+Unofficial fan artwork. Not affiliated with, endorsed by, or licensed from
+CD Projekt Red, Studio Trigger, or the creators of Cyberpunk: Edgerunners.
+
+Artwork provenance
+------------------
+
+Every raster asset in skins/lucy-nightsignal/assets/ was generated with AI
+through the OFOX image API and then processed locally:
+
+- scene-light.webp / scene-dark.webp — text-to-image with
+  `volcengine/doubao-seedream-5.0-pro` (opaque RGB scenes, no characters).
+- lucy-signal-left.webp / lucy-signal-right.webp — text-to-image with
+  `volcengine/doubao-seedream-5.0-pro` on a flat magenta (#FF00FF) plate,
+  then locally chroma-keyed, colour-unmixed, despilled, alpha-floored and
+  despeckled with tools/matte.py (see docs/ART-PROVENANCE.md for the exact
+  recipe, prompts and per-file digests).
+
+No photograph, cosplay image, or other third-party picture was uploaded to the
+image provider: the character design was described in text only.
+
+Usage terms
+-----------
+
+CC BY-NC-SA 4.0 — attribution required, non-commercial use only, derivative
+works must be shared under the same licence. The full legal code is in
+LICENSE. The character depicted remains the property of its rights holders;
+this repository grants no rights to it.
+
+No emoji anywhere in this repository (matching the dsh-skins contribution
+rules).
