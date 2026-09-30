@@ -8,6 +8,10 @@ dark theme, flanked by two silver-bob netrunner portraits. Distributed as a
 pure asset directory that the Skin Center (or the Creative Workshop) drops into
 `$DSH_HOME/skins/lucy-nightsignal/`.
 
+How every one of those decisions was reached - the real shell contract read out
+of the desktop bundle, the two measured CSS pitfalls, and the verification method
+- is written up in [docs/SKIN-TECHNIQUE.md](docs/SKIN-TECHNIQUE.md).
+
 ## Layout
 
 ```

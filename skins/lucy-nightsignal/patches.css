@@ -74,7 +74,14 @@ body {
    a gap and the edges could never be flush.
    Without anchor positioning the same declarations fall back to the
    sidebar-open geometry, where the input card spans roughly 40%-80% of a
-   1440px frame. */
+   1440px frame.
+
+   Two pitfalls that only measuring can catch (see docs/SKIN-TECHNIQUE.md):
+   `right: calc(100% - anchor(--x left))` does NOT mean "viewport minus anchor"
+   (Chrome 154 computed right = the anchor's own left value, dropping the drawing
+   ~314px inside the card), hence the left-edge + translate form; and a box wider
+   than the artwork leaves a gap under `background-size: contain`, hence
+   height + aspect-ratio + width:auto. */
 
 [data-composer-card],
 [data-composer-seat],

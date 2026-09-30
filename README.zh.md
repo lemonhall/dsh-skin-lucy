@@ -4,6 +4,9 @@
 
 一套给 DeepSeek Harness Web GUI 用的赛博朋克同人皮肤：亮色是白天云海之上的未来都市天台，暗色是霓虹雨雾中的夜之城天际线，两侧各立一位银白波波头、发尾彩虹渐变的网络黑客立绘。以纯资产目录的形式分发，由皮肤中心（或创意工坊）装进 `$DSH_HOME/skins/lucy-nightsignal/`。
 
+每一处取舍的依据（从桌面版包里读出的真实契约、两个只有实测才能发现的 CSS 坑、验证方法）
+都写在 [docs/SKIN-TECHNIQUE.md](docs/SKIN-TECHNIQUE.md)。
+
 ## 目录
 
 ```
