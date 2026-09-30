@@ -58,6 +58,19 @@ body {
 
 /* 3 ---------------------------------------------------------------------- */
 
+/* Anchor targets: the left drawer and the right details pane. Putting the
+   portraits in the hands of the shell's own columns means a collapse or an
+   expand can never leave a character hanging over the transcript, and a
+   dragged-resizable pane keeps working without any script. */
+[data-pane="sidebar"] {
+  anchor-name: --lucy-sidebar;
+}
+
+[data-rightbar-col],
+[data-dsh-surface="details"] {
+  anchor-name: --lucy-details;
+}
+
 body:before,
 body:after {
   content: "";
@@ -70,12 +83,13 @@ body:after {
   background-size: auto, contain;
   opacity: 1;
   filter: saturate(1.06) contrast(1.04) drop-shadow(0 22px 30px #04101f5c);
-  transition: height 0.6s cubic-bezier(0.22, 0.78, 0.2, 1);
+  transition: left 0.32s cubic-bezier(0.22, 0.78, 0.2, 1), right 0.32s cubic-bezier(0.22, 0.78, 0.2, 1), height 0.6s cubic-bezier(0.22, 0.78, 0.2, 1);
 }
 
-/* Left: back view with the glowing cyberware traces, hugging the sidebar. */
+/* Left: back view with the glowing cyberware traces, riding the sidebar edge. */
 body:before {
   left: clamp(198px, 17vw, 292px);
+  left: calc(anchor(--lucy-sidebar right, 280px) + clamp(6px, 1vw, 22px));
   width: clamp(200px, 22vw, 356px);
   height: clamp(400px, 76vh, 940px);
   background-image:
@@ -83,14 +97,26 @@ body:before {
     url("assets/lucy-signal-left.webp");
 }
 
-/* Right: front view, the larger of the two, parked in the right wing. */
+/* Right: front view, the larger of the two, parked left of the details pane. */
 body:after {
   right: 0;
+  right: max(0px, calc(100% - anchor(--lucy-details left, 100%)));
   width: clamp(230px, 25vw, 400px);
   height: clamp(440px, 86vh, 1040px);
   background-image:
     radial-gradient(58% 46% at 45% 72%, #dfeaf473, #dfeaf400 72%),
     url("assets/lucy-signal-right.webp");
+}
+
+/* Engines without anchor positioning still get the two drawer states right. */
+@supports not (left: anchor(--lucy-sidebar right, 280px)) {
+  body:has([data-dsh-frame][data-sidebar-collapsed]):before {
+    left: clamp(6px, 0.6vw, 14px);
+  }
+
+  body:has([data-dsh-frame]:not([data-details-collapsed])):after {
+    right: clamp(300px, 26vw, 440px);
+  }
 }
 
 body[data-ds-dark-theme]:before,
@@ -129,10 +155,6 @@ body[data-dsh-conversation-content="true"]:after {
     [class*="centerCol"]
   ) {
     --dsh-chat-content-width: clamp(460px, 52vw, 680px);
-  }
-
-  body:before {
-    left: clamp(180px, 16vw, 250px);
   }
 
   body:after {
